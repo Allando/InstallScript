@@ -19,11 +19,15 @@ PreparingSystems()
 {
 	echo $(tput setaf 6)'Preparing Systems!'$(tput sgr0)
 
-	sudo apt-get update
-	sudo apt-get -y upgrade
-	sudo apt-get -y dist-upgrade
+	$install git
+	mkdir ~/Programming
+	mkdir ~/Programming/Shell
+	mkdir Programming/Shell/Repos
+	git clone https://github.com/allando/updatescript.sh ~/ProgrammingShell/Repos/
+	
+	sh ~/Programming/Shell/Repos/updatescript/updatescript.sh
 
-	echo $(tput setaf 2)'update complete'$(tput sgr0)
+	echo $(tput setaf 2)'Preparation Complete!'$(tput sgr0)
 }
 
 Installing()

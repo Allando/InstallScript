@@ -22,6 +22,8 @@ main()
 	cowsay "ALL DONE!!!" | lolcat -a
 }
 
+# This function verifies which distro it's being used on
+# If distro is Debian, will the function download sudo.
 VerifyDistro()
 {
 	if (lsb_release -si = "Debian");
@@ -30,8 +32,6 @@ VerifyDistro()
 	apt-get install sudo
 	group add ($user)
 	back
-	else
-	
 	fi
 }
 

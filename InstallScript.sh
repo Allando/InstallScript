@@ -4,6 +4,8 @@ set -e
 
 #I am lazy.
 
+
+
 install="sudo apt-get -y install" 
 remove="sudo apt -y --purge remove"  
 symbolic="ln -s"
@@ -11,12 +13,26 @@ clone="git clone"
 
 main()
 {
+	VerifyDistro
  	PreparingSystems
  	Installing
 	Uninstalling
 	AutoRemove
 
 	cowsay "ALL DONE!!!" | lolcat -a
+}
+
+VerifyDistro()
+{
+	if (lsb_release -si = "Debian");
+	then
+	su
+	apt-get install sudo
+	group add ($user)
+	back
+	else
+	
+	fi
 }
 
 PreparingSystems()

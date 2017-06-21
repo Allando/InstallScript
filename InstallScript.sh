@@ -26,12 +26,11 @@ main()
 # If distro is Debian, will the function download sudo.
 VerifyDistro()
 {
-	if (lsb_release -si = "Debian");
-	then
-	su
-	apt-get install sudo
-	group add ($user)
-	back
+	if [[ $(lsb_release -si) = "Debian" ]]; then
+		su
+		apt-get install sudo
+		group add ($user)
+		back
 	fi
 }
 

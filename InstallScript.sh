@@ -13,7 +13,6 @@ clone="git clone"
 
 main()
 {
-	VerifyDistro
  	PreparingSystems
  	Installing
 	Uninstalling
@@ -22,22 +21,17 @@ main()
 	cowsay "ALL DONE!!!" | lolcat -a
 }
 
-# This function verifies which distro it's being used on
-# If distro is Debian, will the function download sudo.
-VerifyDistro()
+PreparingSystems()
 {
+	echo $(tput setaf 6)'Preparing Systems!'$(tput sgr0)
+	
 	if [[ $(lsb_release -si) = "Debian" ]]; then
 		su
 		apt-get install sudo
 		group add ($user)
 		back
 	fi
-}
 
-PreparingSystems()
-{
-	echo $(tput setaf 6)'Preparing Systems!'$(tput sgr0)
-	
 	CreatingDirectories
 	Repositories
 
@@ -115,10 +109,19 @@ Uninstalling()
 	$remove brasero brasero-cdrkit brasero-common gnome-music rhythmbox
 
 	#Games
-	$remove gnome-mahjongg gnome-mines gnome-sudoku aisleriot
+	$remove gnome-mahjongg gnome-mines gnome-sudoku
+
+	if [[ $(lsb_release -si) = "Debian" ]]; then
+		$remove gnome-chess four-in-a-row five-or-more hitori lagno gnome-klotski lightsoff gnome-nibbles gnome-robots quadrapassel swell-foop tali gnome-taquin gnome-tetravex
+	fi
+
+	if [[ $(lsb_release -si) = "Ubuntu" ]]; then
+		$remove aisleriot
+	fi
 
 	#Common
 	$remove gnome-maps gnome-weather
+
 	echo $(tput setaf 2)'Uninstalling complete!'$(tput sgr0)
 }
 

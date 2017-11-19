@@ -77,8 +77,13 @@ InstallShit()
 
 		### Applications
 		## Virtualbox
-
 		sudo pacman -S linux49-virtualbox-host-modules virtualbox
+		
+		## Terminal
+		yaourt -S gnome-terminal-transparency
+
+		## Screen
+		sudo pacman -S screen
 
 		### Reverse Engineering Tools
 		## Repositories

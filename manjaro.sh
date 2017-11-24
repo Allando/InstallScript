@@ -61,8 +61,10 @@ CreateDirectories()
 				ReverseEngineering/FunAndCrackMe \
 				ReverseEngineering/Literatur \
 				ReverseEngineering/Tools
-
-		cd
+		
+		
+		#Returning to home
+		cd 
 }
 
 InstallShit()
@@ -94,7 +96,7 @@ InstallShit()
 		sudo sh radare2/sys/install.sh
 		
 		### Network
-		sudo pacman -S wireshark gnu-netcat
+		sudo pacman -S wireshark-cli gnu-netcat
 
 		### Miscelanious
 		sudo pacman -S cowsay lolcat
@@ -102,8 +104,14 @@ InstallShit()
 
 Dotfiles()
 {
+		cd # Back to home again... 		
+
 		cd ComputerScience/Programming/Repositories
 		git clone https://github.com/allando/Dotfiles.git
+
+		# Installing pathogen
+		sh /home/theippo1000/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/install.sh
+
 		cd # Back to home
 
 		# Symbolic links
@@ -112,3 +120,5 @@ Dotfiles()
 		sudo rm -r .bashrc
 		ln -s ComputerScience/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc 
 }
+
+main

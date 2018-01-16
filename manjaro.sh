@@ -4,121 +4,122 @@ set -e
 
 main()
 {
-		Update
-		CreateDirectories
-		InstallShit
-		Dotfiles
+    Update
+    CreateDirectories
+    InstallShit
+    Dotfiles
 
-		cowsay "ALL FUCKING DONE!!!" | lolcat -a
+    cowsay "ALL FUCKING DONE!!!" | lolcat -a
 }
 
 Update()
 {
-		echo Updating...
+    echo Updating...
 
-		if (sudo pacman -Syyu); then
-				echo Update complete
-		else
-				echo Update failed
-		fi
+    if (sudo pacman -Syyu); then
+        echo Update complete
+    else
+        echo Update failed
+    fi
 }
 
 CreateDirectories()
 {
-		echo Creating directories
+    echo Creating directories
 
-		# Changing current directory to home
-		cd 
+    # Changing current directory to home
+    cd 
 
-		# Computer science
-		mkdir -v ComputerScience
-		cd ComputerScience
+    # Computer science
+    mkdir -v ComputerScience
+    cd ComputerScience
 
-		# Programming
-		mkdir -v -p Programming \
-				Programming/Assembly \
-				Programming/Assembly/LearnAssembly \
-				Programming/Assembly/Repositories \
-				Programming/Bash \
-				Programming/Bash/LocalScript \
-				Programming/Bash/Repositories \
-				Programming/C \
-				Programming/C/FunC \
-				Programming/C/LearnC \
-				Programming/C/Repositories \
-				Programming/JavaScript \
-				Programming/JavaScript/Repositories \
-				Programming/Python \
-				Programming/Python/FunPy \
-				Programming/Python/LearnPy \
-				Programming/Python/Repositories \
-				Programming/Repositories \
-				Programming/Sharp \
-				Programming/Repositories
-
-		# Reverse Engineering
-		mkdir -v -p ReverseEngineering \
-				ReverseEngineering/FunAndCrackMe \
-				ReverseEngineering/Literatur \
-				ReverseEngineering/Tools
+    # Programming
+    mkdir -v -p Programming \
+        Programming/Assembly \
+        Programming/Assembly/LearnAssembly \
+        Programming/Assembly/Repositories \
+        Programming/Bash \
+        Programming/Bash/LocalScript \
+        Programming/Bash/Repositories \
+        Programming/C \
+        Programming/C/FunC \
+        Programming/C/LearnC \
+        Programming/C/Repositories \
+        Programming/JavaScript \
+        Programming/JavaScript/Repositories \
+        Programming/Python \
+        Programming/Python/FunPy \
+        Programming/Python/LearnPy \
+        Programming/Python/Repositories \
+        Programming/Repositories \
+        Programming/Sharp \
+        Programming/Repositories
+    
+    # Reverse Engineering
+    mkdir -v -p ReverseEngineering \
+        ReverseEngineering/FunAndCrackMe \
+        ReverseEngineering/Literatur \
+        ReverseEngineering/Tools
 		
-		
-		#Returning to home
-		cd 
+    #Returning to home
+    cd 
 }
 
 InstallShit()
 {
-		echo Installing stuffs
+    echo Installing stuffs
+    
+    INSTALL="sudo pacman -S --noconfirm"
+
+    ### System tools
+    $INSTALL yaourt htop gtop
+
+    ### Programming
+    $INSTALL vim base-devel
+
+    ### Applications
+    ## Virtualbox
+    $INSTALL linux414-virtualbox-host-modules virtualbox
 		
-		### System tools
-		sudo pacman -S yaourt htop gtop
+    ##Terminal
+    $INSTALL termite
+    
+    ## Screen
+    $INSTALL screen
 
-		### Programming
-		sudo pacman -S vim base-devel
+    ### Reverse Engineering Tools
+    ## Repositories
 
-		### Applications
-		## Virtualbox
-		sudo pacman -S linux49-virtualbox-host-modules virtualbox
+    #Radare 2
+    cd ComputerScience/ReverseEngineering/Tools
+    git clone https://github.com/radare/radare2.git
+    sudo sh radare2/sys/install.sh
 		
-		## Terminal
-		yaourt -S gnome-terminal-transparency
+    ### Network
+    $INSTALL wireshark-cli gnu-netcat
 
-		## Screen
-		sudo pacman -S screen
-
-		### Reverse Engineering Tools
-		## Repositories
-
-		#Radare 2
-		cd ComputerScience/ReverseEngineering/Tools
-		git clone https://github.com/radare/radare2.git
-		sudo sh radare2/sys/install.sh
-		
-		### Network
-		sudo pacman -S wireshark-cli gnu-netcat
-
-		### Miscelanious
-		sudo pacman -S cowsay lolcat
+    ### Miscelanious
+    $INSTALL cowsay lolcat
 }
 
 Dotfiles()
 {
-		cd # Back to home again... 		
+    cd # Back to home again... 		
 
-		cd ComputerScience/Programming/Repositories
-		git clone https://github.com/allando/Dotfiles.git
+    cd ComputerScience/Programming/Repositories
+    git clone https://github.com/allando/Dotfiles.git
 
-		# Installing pathogen
-		sh /home/theippo1000/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/install.sh
+    # Installing pathogen
+    sh /home/theippo1000/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/install.sh
 
-		cd # Back to home
+    cd # Back to home
 
-		# Symbolic links
-		ln -s ComputerScience/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
+    # Symbolic links
+    ln -s ComputerScience/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
 
-		sudo rm -r .bashrc
-		ln -s ComputerScience/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc 
+    sudo rm -r .bashrc
+    ln -s ComputerScience/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc 
 }
 
 main

@@ -81,8 +81,11 @@ InstallShit()
     ### Applications
     ## Virtualbox
     $INSTALL linux414-virtualbox-host-modules virtualbox
-		
-    ##Terminal
+    
+    # Keep this --no-confirm untill a better solution is found.
+    sudo pacman -S vte3-ng
+
+    ## Terminal
     $INSTALL termite
     
     ## Screen
@@ -92,7 +95,7 @@ InstallShit()
     ## Repositories
 
     #Radare 2
-    cd ComputerScience/ReverseEngineering/Tools
+    cd /home/$USER/ComputerScience/ReverseEngineering/Tools
     git clone https://github.com/radare/radare2.git
     sudo sh radare2/sys/install.sh
 		
@@ -107,19 +110,19 @@ Dotfiles()
 {
     cd # Back to home again... 		
 
-    cd ComputerScience/Programming/Repositories
+    cd /home/$USER/ComputerScience/Programming/Repositories
     git clone https://github.com/allando/Dotfiles.git
 
     # Installing pathogen
-    sh /home/theippo1000/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/install.sh
+    sh /home/$USER/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/install.sh
 
     cd # Back to home
 
     # Symbolic links
-    ln -s ComputerScience/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
+    ln -s /home/$USER/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
 
     sudo rm -r .bashrc
-    ln -s ComputerScience/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc 
+    ln -s /home/$USER/ComputerScience/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc 
 }
 
 main

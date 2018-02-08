@@ -100,7 +100,7 @@ InstallShit()
     sudo sh radare2/sys/install.sh
 		
     ### Network
-    $INSTALL wireshark-cli gnu-netcat
+    $INSTALL wireshark-qt gnu-netcat dnsutils nmap
 
     ### Miscelanious
     $INSTALL cowsay lolcat

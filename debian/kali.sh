@@ -14,7 +14,7 @@ main()
 {
  	PreparingSystems
  	# Installing
-	Uninstalling
+	# Uninstalling
 	AutoRemove
 
 	cowsay "ALL DONE!!!" | lolcat -a

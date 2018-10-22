@@ -56,17 +56,22 @@ Repositories()
 	$clone https://github.com/allando/updatescript.git ~/SystemStuff/Repositories/
 	$clone https://github.com/allando/vimrc.git ~/SytemStuff/Repositories/
 
+	# peda-gdp
+	git clone https://github.com/longld/peda.git ~/peda
+	echo "source ~/peda/peda.py" >> ~/.gdbinit
+	echo "DONE! debug your program with gdb and enjoy"
+
 	echo $(tput setaf 2)'Done!'$(tput sgr0)
 }
 
-Installing()
-{
-	echo $(tput setaf 6)'Installing'$(tput sgr0)
+# Installing()
+# {
+# 	echo $(tput setaf 6)'Installing'$(tput sgr0)
 	
-	$install gdb-peda
+# 	$install gdb-peda
 
-	echo $(tput setaf 2)'Installing complete!'$(tput sgr0)
-}
+# 	echo $(tput setaf 2)'Installing complete!'$(tput sgr0)
+# }
 
 # Uninstalling()
 # {

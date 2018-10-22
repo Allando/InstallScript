@@ -56,8 +56,6 @@ InstallingSystems()
     $install \
         gnome \
         gnome-extra
-
-
 }
 
 CreateDirectories()
@@ -120,8 +118,6 @@ InstallShit()
     
     INSTALL="sudo pacman -S --noconfirm"
     ### Critical system software
-
-
 
     ### System tools
     $INSTALL yaourt htop gtop tmux

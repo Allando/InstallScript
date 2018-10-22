@@ -7,9 +7,10 @@ verifyDistro()
 	currentDistro=$(lsb_release -si)
 
 	case currentDistro in
-		"ManjaroLinux" ):	currentDistro="manjaro";;
-		"ArchLinux" ): 		currentDistro="arch";;
-		"ubuntu" ): 		currentDistro="ubuntu";;
+		"ManjaroLinux" 	):	currentDistro="manjaro";;
+		"ArchLinux" 	): 	currentDistro="arch";;
+		"ubuntu" 		): 	currentDistro="ubuntu";;
+		"kali"			):	currentDistro="kali";;
 		* ): 				echo "System not supported" && (exit 1);
 	esac
 
@@ -18,12 +19,13 @@ verifyDistro()
 
 installSystemDependentStuff()
 {
-	distro=$currentDistro
+	distro=$(verifyDistro)
 
 	case currentDistro in
-		"manjaro" ): 	$(sudo manjaro/manjaro.sh);;
-		"arch" ): 		$(sudo arch/arch.sh);;
-		"ubuntu" ): 	$(sudo ubuntu/ubuntu.sh);;
+		"manjaro" 	): 	$(sudo arch/manjaro.sh);;
+		"arch" 		):	$(sudo arch/arch.sh);;
+		"ubuntu" 	): 	$(sudo debian/ubuntu.sh);;
+		"kali"		):	$(sudo debian/kali.sh);;
 		* ):			echo "Still not supported... How the hell did this slip through" && (exit 1);
 	esac
 }
@@ -43,4 +45,14 @@ setUpSystems()
 
 	
 # TODO: Cronjob: Prepare auto update for clamav
+}
+
+main()
+{
+	verifyDistro
+	installSystemDependentStuff
+
+	if [[ $(verifyDistro) != "kali" ]]; then
+		setUpSystems
+	fi
 }

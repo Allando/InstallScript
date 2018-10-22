@@ -17,7 +17,7 @@ main()
 	# Uninstalling
 	AutoRemove
 
-	cowsay "ALL DONE!!!" | lolcat -a
+	# cowsay "ALL DONE!!!" | lolcat -a
 }
 
 PreparingSystems()

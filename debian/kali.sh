@@ -28,7 +28,10 @@ PreparingSystems()
 	Repositories
 
 	#Running updateScript
-	sh Programming/Shell/Repos/updateScript/updateScript.sh
+	apt-get update
+	apt-get -y upgrade
+	apt-get -y dist-upgrade
+	AutoRemove
 
 	#Creating Symbolic links
 	$symbolic Programming/Repos/Vimrc/vimrc ~/.vimrc
@@ -53,8 +56,8 @@ Repositories()
 	echo $(tput setaf 6)'Cloning Repositories'$(tput sgr0)
 	
 	#Allando Repositories
-	$clone https://github.com/allando/updatescript.git $sysDir
-	$clone https://github.com/allando/vimrc.git $sysDir
+	$clone https://github.com/allando/updatescript.git ~/SystemStuff/Repositories/
+	$clone https://github.com/allando/vimrc.git ~/SystemStuff/Repositories/
 
 	# peda-gdp
 	git clone https://github.com/longld/peda.git ~/peda

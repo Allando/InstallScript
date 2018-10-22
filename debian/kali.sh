@@ -13,7 +13,7 @@ clone="git clone"
 main()
 {
  	PreparingSystems
- 	Installing
+ 	# Installing
 	Uninstalling
 	AutoRemove
 

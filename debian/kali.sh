@@ -41,7 +41,7 @@ CreatingDirectories()
 	echo $(tput setaf 6)'Creating Directories'$(tput sgr0)
 
 	#Programming directories
-	mkdir -v -p CTF/Ŕoot-Me Scripts/Repositories Scripts/LocalScripts
+	mkdir -v -p CTF/Ŕoot-Me Scripts/Repositories Scripts/LocalScripts SystemStuff/Repositories/
 
 	echo $(tput setaf 2)'Done!'$(tput sgr0)
 }

@@ -50,11 +50,13 @@ CreatingDirectories()
 
 Repositories()
 {
+	sysDir="SystemStuff/Repositories/"
+
 	echo $(tput setaf 6)'Cloning Repositories'$(tput sgr0)
 	
 	#Allando Repositories
-	$clone https://github.com/allando/updatescript.git ~/SystemStuff/Repositories/
-	$clone https://github.com/allando/vimrc.git ~/SytemStuff/Repositories/
+	$clone https://github.com/allando/updatescript.git $sysDir
+	$clone https://github.com/allando/vimrc.git $sysDir
 
 	# peda-gdp
 	git clone https://github.com/longld/peda.git ~/peda

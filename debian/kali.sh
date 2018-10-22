@@ -13,7 +13,7 @@ clone="git clone"
 main()
 {
  	PreparingSystems
- 	# Installing
+ 	Installing
 	# Uninstalling
 	AutoRemove
 
@@ -66,14 +66,14 @@ Repositories()
 	echo $(tput setaf 2)'Done!'$(tput sgr0)
 }
 
-# Installing()
-# {
-# 	echo $(tput setaf 6)'Installing'$(tput sgr0)
+Installing()
+{
+	echo $(tput setaf 6)'Installing'$(tput sgr0)
 	
-# 	$install gdb-peda
+	$install cowsay lolcat
 
-# 	echo $(tput setaf 2)'Installing complete!'$(tput sgr0)
-# }
+	echo $(tput setaf 2)'Installing complete!'$(tput sgr0)
+}
 
 # Uninstalling()
 # {

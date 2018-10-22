@@ -56,7 +56,6 @@ Repositories()
 	echo $(tput setaf 6)'Cloning Repositories'$(tput sgr0)
 	
 	#Allando Repositories
-	$clone https://github.com/allando/updatescript.git ~/SystemStuff/Repositories/
 	$clone https://github.com/allando/vimrc.git ~/SystemStuff/Repositories/
 
 	# peda-gdp

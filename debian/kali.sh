@@ -4,7 +4,6 @@ set -e
 
 #I am lazy.
 
-
 install="sudo apt-get -y install" 
 remove="sudo apt -y --purge remove"  
 symbolic="ln -s"
@@ -14,10 +13,7 @@ main()
 {
  	PreparingSystems
  	Installing
-	# Uninstalling
 	AutoRemove
-
-	# cowsay "ALL DONE!!!" | lolcat -a
 }
 
 PreparingSystems()

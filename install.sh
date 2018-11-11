@@ -120,7 +120,7 @@ archSetUp()
 		vim \
 		virtualbox \
 		wireshark-qt \
-		yaourt
+		yaourt/
 }
 
 manjaroSetUp()
@@ -227,11 +227,11 @@ kaliSetUp()
 	notificationColor "normal" "Creating Directories..."
 
 	mkdir -v -p \
-		CTF/HackTheBox \
-		CTF/OverTheWire \
-		CTF/Ŕoot-Me \
-		Scripts/Repositories\
-		Scripts/LocalScripts
+		/root/CTF/HackTheBox \
+		/root/CTF/OverTheWire \
+		/root/CTF/Ŕoot-Me \
+		/root/Scripts/Repositories\
+		/root/Scripts/LocalScripts
 
 	notificationColor "success " "Done"
 	
@@ -244,13 +244,13 @@ kaliSetUp()
 	echo $(tput setaf 6)'Cloning Repositories'$(tput sgr0)
 	
 	#Allando Repositories
-	$clone https://github.com/allando/Dotfiles.git ~/SystemStuff/Repositories/
+	$clone https://github.com/allando/Dotfiles.git /root/SystemStuff/Repositories/
 
 	#Creating Symbolic links
-	$symbolic SystemStuff/Repositories/Vimrc/vimrc ~/.vimrc
+	$symbolic SystemStuff/Repositories/Vimrc/vimrc /root/.vimrc
 
 	# peda-gdp
-	git clone https://github.com/longld/peda.git ~/peda
+	git clone https://github.com/longld/peda.git /root/peda
 	echo "source ~/peda/peda.py" >> ~/.gdbinit
 	echo "DONE! debug your program with gdb and enjoy"
 

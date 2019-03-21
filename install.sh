@@ -17,7 +17,7 @@ verifyDistro()
 	esac
 
 	notificationColor "success" 'Done'
-	return currentDistroS
+	return currentDistro
 }
 
 installSystemDependentStuff()
@@ -52,31 +52,31 @@ creatingDirectories()
 	notificationColor "normal" "Creating directories..."
 
 	mkdir -v -p \
-		/home/$USER/ComputerScience \
-		/home/$USER/ComputerScience/Programming \
-		/home/$USER/ComputerScience/Programming/Assembly \
-		/home/$USER/ComputerScience/Programming/Assembly/LearnAssembly \
-		/home/$USER/ComputerScience/Programming/Assembly/Repositories \
-		/home/$USER/ComputerScience/Programming/Bash \
-		/home/$USER/ComputerScience/Programming/Bash/LocalScript \
-		/home/$USER/ComputerScience/Programming/Bash/Repositories \
-		/home/$USER/ComputerScience/Programming/C \
-		/home/$USER/ComputerScience/Programming/C/FunC \
-		/home/$USER/ComputerScience/Programming/C/LearnC \
-		/home/$USER/ComputerScience/Programming/C/Repositories \
-		/home/$USER/ComputerScience/Programming/JavaScript \
-		/home/$USER/ComputerScience/Programming/JavaScript/Repositories \
-		/home/$USER/ComputerScience/Programming/Python \
-		/home/$USER/ComputerScience/Programming/Python/FunPy \
-		/home/$USER/ComputerScience/Programming/Python/LearnPy \
-		/home/$USER/ComputerScience/Programming/Python/Repositories \
-		/home/$USER/ComputerScience/Programming/Repositories \
-		/home/$USER/ComputerScience/Programming/Sharp \
-		/home/$USER/ComputerScience/Programming/Repositories \
-		/home/$USER/ComputerScience/ReverseEngineering \
-		/home/$USER/ComputerScience/ReverseEngineering/FunAndCrackMe \
-		/home/$USER/ComputerScience/ReverseEngineering/Literatur \
-		/home/$USER/ComputerScience/ReverseEngineering/Tools
+		/home/$USER/Projects \
+		/home/$USER/Projects/Programming \
+		/home/$USER/Projects/Programming/Assembly \
+		/home/$USER/Projects/Programming/Assembly/LearnAssembly \
+		/home/$USER/Projects/Programming/Assembly/Repositories \
+		/home/$USER/Projects/Programming/Bash \
+		/home/$USER/Projects/Programming/Bash/LocalScript \
+		/home/$USER/Projects/Programming/Bash/Repositories \
+		/home/$USER/Projects/Programming/C \
+		/home/$USER/Projects/Programming/C/FunC \
+		/home/$USER/Projects/Programming/C/LearnC \
+		/home/$USER/Projects/Programming/C/Repositories \
+		/home/$USER/Projects/Programming/JavaScript \
+		/home/$USER/Projects/Programming/JavaScript/Repositories \
+		/home/$USER/Projects/Programming/Python \
+		/home/$USER/Projects/Programming/Python/FunPy \
+		/home/$USER/Projects/Programming/Python/LearnPy \
+		/home/$USER/Projects/Programming/Python/Repositories \
+		/home/$USER/Projects/Programming/Repositories \
+		/home/$USER/Projects/Programming/Sharp \
+		/home/$USER/Projects/Programming/Repositories \
+		/home/$USER/Projects/ReverseEngineering \
+		/home/$USER/Projects/ReverseEngineering/FunAndCrackMe \
+		/home/$USER/Projects/ReverseEngineering/Literatur \
+		/home/$USER/Projects/ReverseEngineering/Tools
 
 	notificationColor "success" "Done"
 }
@@ -84,19 +84,19 @@ creatingDirectories()
 Dotfiles()
 {
 	notificationColor "normal" "Setting up dotfiles"
-	cd /home/$USER/ComputerScience/Programming/Repositories
+	cd /home/$USER/Projects/Programming/Repositories
 	git clone https://github.com/allando/Dotfiles.git
 
 	# Installing pathogen
-	sh /home/$USER/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/install.sh
+	sh /home/$USER/Projects/Programming/Repositories/Dotfiles/Vimrc/install.sh
 
 	cd # Back to home
 
 	# Symbolic links
-	ln -s /home/$USER/ComputerScience/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
+	ln -s /home/$USER/Projects/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
 
 	sudo rm -r .bashrc
-	ln -s /home/$USER/ComputerScience/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc
+	ln -s /home/$USER/Projects/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc
 	notificationColor "success" "Done"
 }
 
@@ -149,7 +149,7 @@ manjaroSetUp()
 		yaourt
 
 	# Radare 2 from reposetories
-	cd /home/$USER/ComputerScience/ReverseEngineering/Tools
+	cd /home/$USER/Projects/ReverseEngineering/Tools
 	git clone https://github.com/radare/radare2.git
 	sudo sh radare2/sys/install.sh
 
@@ -282,6 +282,7 @@ notificationColor()
 main()
 {
 	distro=$verifyDistro
+	echo $distro
 
 	if [[ $distro != "kali" || $distro != "arch" ]]; then
 		creatingDirectories

@@ -27,7 +27,7 @@ installSystemDependentStuff()
 		"arch"      ):  $archSetUp;;
 		"ubuntu"    ):  $ubuntuSetUp;;
 		"kali"      ):  $kaliSetUp;;
-		* 			):  echo "Still not supported... How the hell did this slip through" && (exit 1);
+		* 			):  error "Still not supported... How the hell did this slip through" && (exit 1);
 	esac
 }
 
@@ -40,7 +40,7 @@ setUpSystems()
 	sudo cp libs/RuinerBooting.jpg /usr/share/grub/RuinerBooting.jpg
 	sudo echo GRUB_COLOR_NORMAÆ="red/black" >> $pathToGrub
 	sudo echo GRUB_COLOR_HIGHLIGHT="black/red" >> $pathToGrub
-	sudo echo GRUB_BACKGROUND="/sr/share/grub/RuinerBooting.jpg" >> $pathToGrub
+	sudo echo GRUB_BACKGROUND="/usr/share/grub/RuinerBooting.jpg" >> $pathToGrub
 
 	sudo systemctl enable ufw
 
@@ -52,6 +52,7 @@ creatingDirectories()
 	notificationColor "normal" "Creating directories..."
 
 	mkdir -v -p \
+		/home/$USER/.SystemFiles \
 		/home/$USER/Projects \
 		/home/$USER/Projects/Programming \
 		/home/$USER/Projects/Programming/Assembly \
@@ -128,6 +129,7 @@ manjaroSetUp()
 	notificationColor "normal" "Installing applications..."
 
 	installPacman="sudo pacman -S --noconfirm"
+	installTrizen="trizen -S"
 
 	### System tools
 	$installPacman \
@@ -142,16 +144,32 @@ manjaroSetUp()
 		linux414-virtualbox-host-modules \
 		lolcat \
 		nmap \
+		numlockx \
+		qbittorrent \
 		termite \
+		trizen \
 		vim \
 		virtualbox \
 		wireshark-qt \
-		yaourt
 
-	# Radare 2 from reposetories
-	cd /home/$USER/Projects/ReverseEngineering/Tools
-	git clone https://github.com/radare/radare2.git
-	sudo sh radare2/sys/install.sh
+	# PIA OpenVpn
+	cd .SystemFiles	
+	wget  https://www.privateinternetaccess.com/installer/pia-nm.sh
+	sudo sh pia-nm.sh
+	cd /home/$ŨSER/
+
+	# SublimeText 3
+	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+	sudo apt-get install apt-transport-https
+	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+	$installTrizen\
+		spotify \
+		telegram-desktop \
+		tor-browser \
+
+
+
 
 	notificationColor "success" "Done"
 }
@@ -281,10 +299,15 @@ notificationColor()
 
 main()
 {
+	if [[ $(whoami) == "root" ]]; then
+		echo "Do not run the whole script as root."
+		exit(1)
+	fi
+
 	distro=$verifyDistro
 	echo $distro
 
-	if [[ $distro != "kali" || $distro != "arch" ]]; then
+	if [[ $distro != "kali" && $distro != "arch" ]]; then
 		creatingDirectories
 		Dotfiles
 		installSystemDependentStuff $distro

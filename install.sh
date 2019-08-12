@@ -59,14 +59,11 @@ creatingDirectories()
 		/home/$USER/Projects/Programming/Assembly/LearnAssembly \
 		/home/$USER/Projects/Programming/Assembly/Repositories \
 		/home/$USER/Projects/Programming/Bash \
-		/home/$USER/Projects/Programming/Bash/LocalScript \
 		/home/$USER/Projects/Programming/Bash/Repositories \
 		/home/$USER/Projects/Programming/C \
 		/home/$USER/Projects/Programming/C/FunC \
 		/home/$USER/Projects/Programming/C/LearnC \
 		/home/$USER/Projects/Programming/C/Repositories \
-		/home/$USER/Projects/Programming/JavaScript \
-		/home/$USER/Projects/Programming/JavaScript/Repositories \
 		/home/$USER/Projects/Programming/Python \
 		/home/$USER/Projects/Programming/Python/FunPy \
 		/home/$USER/Projects/Programming/Python/LearnPy \
@@ -74,10 +71,7 @@ creatingDirectories()
 		/home/$USER/Projects/Programming/Repositories \
 		/home/$USER/Projects/Programming/Sharp \
 		/home/$USER/Projects/Programming/Repositories \
-		/home/$USER/Projects/ReverseEngineering \
-		/home/$USER/Projects/ReverseEngineering/FunAndCrackMe \
-		/home/$USER/Projects/ReverseEngineering/Literatur \
-		/home/$USER/Projects/ReverseEngineering/Tools
+
 
 	notificationColor "success" "Done"
 }
@@ -94,10 +88,10 @@ Dotfiles()
 	cd # Back to home
 
 	# Symbolic links
-	ln -s /home/$USER/Projects/Programming/Repositories/Dotfiles/Vimrc/vimrc .vimrc
+	ln -s /home/$USER/.SystemFiles/Dotfiles/Vimrc/vimrc /$USER/.vimrc
 
-	sudo rm -r .bashrc
-	ln -s /home/$USER/Projects/Programming/Repositories/Dotfiles/Bashrc/bashrc .bashrc
+	sudo rm -rfv .bashrc
+	ln -s /home/$USER/.SystemFiles/Dotfiles/Bashrc/bashrc /$USER/.bashrc
 	notificationColor "success" "Done"
 }
 
